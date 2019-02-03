@@ -19,7 +19,7 @@ class Document:
             h.update(bytes(self.__text))
             self.__hash = h.hexdigest()
             return self.__hash
-    def __compute_val(self, classifier):
+    def compute_val(self, classifier):
         if self.__value:
             return self.__value
         else:

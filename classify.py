@@ -170,4 +170,8 @@ class Classifier:
         sample = np.array(vect)
 
         result = self.saved_model.predict(sample)
-        return result[0]
+        if result[0] > .6:
+            return 1
+        else:
+            return 0
+        # return result[0]
