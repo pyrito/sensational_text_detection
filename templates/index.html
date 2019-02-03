@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+	<link rel="favicon" type="image/png" href="/static/imgs/donald.png">
+    <title>Sensational Text Detector</title>
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="static/js/app.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+</head>
+<body>
+	<div class="topcontainer">
+		<h1> Check if your text is SENSATIONALIST!</h1>
+		<p> Check out the difference your thoughts and prayers are making!!! </p>
+		<p>"With all of the “thoughts and prayers” being offered, how is it possible that this keeps happening?" - Andrew Weinstein (@weinsteinlaw) </p>
+	</div>
+	<div class="middlecontainer">
+        <h2> Enter title here:</h2>
+        <form action="" method="">
+            <textarea class='autoExpand' data-min-rows='1' maxlength="150" rows="1"></textarea>
+        </form>
+
+		<h2> Enter text here: </h2>
+		<form action="" method="">
+            <textarea class='autoExpand' data-min-rows='3' maxlength="5000" rows="3" cols="160"></textarea>
+        </form>
+	</div>
+	<div class="bottomcontainer">
+		<h4 id="sound" onclick="sound()"> Yup. This is America. </h4>
+	</div>
+</body>
+<footer>
+	<p>Made with ❤ in Austin. Built with Tensorflow. <a href="https://github.com/pyrito/thoughts-and-prayers"> Github </a></p>
+</footer>
+</html>
