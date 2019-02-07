@@ -22,6 +22,8 @@ class Classifier:
         try:
             print("Loading model")
             self.saved_model = keras.models.load_model('sensational_detector_model.h5')
+            self.saved_model._make_predict_function()
+            self.graph = tf.get_default_graph()
         except FileNotFoundError:
             print("Model does not exist")
             exit(1)
@@ -169,7 +171,8 @@ class Classifier:
 
         sample = np.array(vect)
 
-        result = self.saved_model.predict(sample)
+        with self.graph.as_default():
+            result = self.saved_model.predict(sample)
         if result[0] > .6:
             return 1
         else:

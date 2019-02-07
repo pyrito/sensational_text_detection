@@ -4,12 +4,12 @@ class Document:
     def __init__(self, title=None, text=None):
         if title == None or text == None:
             self.__title = None
-            self.__body = None
-            self.__value = None
-            self.__hash = None
+            self.__text = None
         else:
             self.__title = title
             self.__text = text
+        self.__hash = None
+        self.__value = None
     def __hash__(self):
         if self.__hash:
             return self.__hash
