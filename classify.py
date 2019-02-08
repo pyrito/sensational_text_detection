@@ -1,6 +1,7 @@
 import tensorflow as tf
 from tensorflow.contrib import keras
 import pattern.en
+import sys
 from pattern.en.wordlist import PROFANITY
 import pickle
 import nltk
@@ -161,9 +162,9 @@ class Classifier:
         output_vector = [pos_title, pos_text, prof_title, prof_text, sent_text, sent_title, len_title, len_text,
                          synt_text, emp_title, emp_text, cap_title, cap_text]
 
-        print(self.pos_vectorizer.vocabulary_)
-        print(self.chunk_vectorizer.vocabulary_)
-        print(output_vector)
+        # print(self.pos_vectorizer.vocabulary_)
+        # print(self.chunk_vectorizer.vocabulary_)
+        # print(output_vector)
         vect = [keras.preprocessing.sequence.pad_sequences(output_vector,
                                                           value=0,
                                                           padding='post',
@@ -173,7 +174,8 @@ class Classifier:
 
         with self.graph.as_default():
             result = self.saved_model.predict(sample)
-        if result[0] > .6:
+        print (result, file=sys.stderr)
+        if result[0][0] > .6:
             return 1
         else:
             return 0

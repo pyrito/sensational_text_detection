@@ -18,36 +18,12 @@
 </head>
 <body>
 	<div class="topcontainer">
-		<h1> Check if your text is SENSATIONALIST!</h1>
+		<h1> Results</h1>
 		<p> Check out the difference your thoughts and prayers are making!!! </p>
 		<p>"With all of the “thoughts and prayers” being offered, how is it possible that this keeps happening?" - Andrew Weinstein (@weinsteinlaw) </p>
 	</div>
-	<div class="middlecontainer">
-        <h2> Enter title here:</h2>
-        <form id="form1" action="/check" name="input" method="">
-            <textarea name="title" class='autoExpand' data-min-rows='1' maxlength="150" rows="1"></textarea>
-		<h2> Enter text here: </h2>
-			<textarea name="text" class='autoExpand' data-min-rows='3' maxlength="5000" rows="3" cols="160"></textarea>
-			<button type="submit" formmethod="post" id="but" >Submit using POST</button>
-		</form>
-		
-		<script>
-			$("#form1").submit(function(){      
-				$.ajax({
-					type: 'POST',
-					url : '/check',
-					data : {
-						title : $('textarea#title').html(),
-						text : $('textarea#text').html()
-					},
-					success : function(html) {},
-					dataType: "json"
-				})
-			}
-		</script>
-	</div>
 	<div class="bottomcontainer">
-		<h4 id="sound" onclick="sound()"> Yup. This is America. </h4>
+		<h4 id="sound" onclick="sound()"> NOT SENSATIONALIZED </h4>
 	</div>
 </body>
 <footer>
