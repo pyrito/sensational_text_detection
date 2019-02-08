@@ -8,7 +8,7 @@ import nltk
 import string
 import collections
 import numpy as np
-
+nltk.download('wordnet')
 
 class Classifier:
     def __init__(self):
