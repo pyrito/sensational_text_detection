@@ -4,12 +4,12 @@ app = Flask(__name__)
 from classify import Classifier
 from document import Document
 from newspaper import Article
-import nltk
+# import nltk
 import sys
 
 c = Classifier()
 # database = open_database()
-nltk.download('wordnet')
+# nltk.download('wordnet')
 
 @app.route('/')
 def main():
