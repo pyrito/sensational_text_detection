@@ -1,17 +1,19 @@
 @import url(https://fonts.googleapis.com/css?family=Lora:400,700|Open+Sans:400,400i,700);
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+@import url('https://fonts.googleapis.com/css?family=VT323');
 h1,h2{margin-top:30px}
-nav ul,p{line-height:150%;font-family:Lora,serif}
+nav ul,p{line-height:150%;font-family:'VT323', monospace}
 .footer,nav{position:fixed;left:0}
-#navbar,*,h1,h2,nav ul,p, button{font-family:Lora,serif}
+#navbar,*,h1,h2,nav ul,p, button{font-family:'VT323', monospace}
 *{background-color:#f6f3f3}
 figcaption{font-style:italic}
 h1{text-align:center; font-size:3.5em}
 h2{font-size:2.5em}
-h3{text-align: center; font-size: 5.5em; margin-top: 5px; margin-bottom: 5px}
+h3{text-align: center; font-size: 10em; margin-top: 5px; margin-bottom: 5px}
 h4{text-align:center; font-size:3.5em;}
-p{font-weight:400;font-size:1.2em}
+p{font-weight:400;font-size:1.5em}
 img{max-width:100%;height:auto}
-textarea {background-color : #ffffff; resize: none;  height: 100%; width: 100%; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; box-sizing:border-box; font-size:24px; font-family:Lora, serif;}
+textarea {background-color : #ffffff; resize: none;  height: 100%; width: 100%; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; box-sizing:border-box; font-size:30px; font-family:'VT323', monospace;}
 nav{top:0;width:350px;height:100vh;text-align:center;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;border-right:10px solid #000}
 nav ul{padding:0;font-size:25px;text-align:left;font-weight:lighter;list-style:none}
 nav a{text-decoration:none;color:#000}

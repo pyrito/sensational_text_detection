@@ -18,34 +18,14 @@
 </head>
 <body>
 	<div class="topcontainer">
-		<h1> Check if your article is SENSATIONALIZED!</h1>
-		<p> Are you reading a novel or a news article?!?!?! </p>
-		<p>"Fake News has become an art form." - A.E. Samaan </p>
-	</div>
-	<div class="middlecontainer">
-        <h2> Enter article link here:</h2>
-        <form id="form1" action="/check" name="input" method="">
-            <textarea name="link" class='autoExpand' data-min-rows='1' maxlength="150" rows="1"></textarea>
-			<button type="submit" formmethod="post" id="but" >Submit</button>
-		</form>
-
-		
-		<script>
-			$("#form1").submit(function(){      
-				$.ajax({
-					type: 'POST',
-					url : '/check',
-					data : {
-						link : $('textarea#link').html(),
-					},
-					success : function(html) {},
-					dataType: "json"
-				})
-			}
-		</script>
+		<h1> About</h1>
 	</div>
 	<div class="bottomcontainer">
-		<h4 id="sound" onclick="sound()"> Yup. This is America. </h4>
+		<p> Hey! This website was built as an extension of a project that was developed for our 
+            Computational Semantics class at UT Austin (LIN 350). Our machine learning model was
+            inspired by a Github project which attempted to do the same goal that we had: determine
+            if certain newspaper articles used what we consider "sensational" vocabulary. 
+        </p>
 	</div>
 </body>
 <footer>

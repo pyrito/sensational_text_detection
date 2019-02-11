@@ -8,7 +8,7 @@ import sys
 
 c = Classifier()
 # database = open_database()
-# nltk.download('wordnet')
+app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 @app.route('/')
 def main():
@@ -28,12 +28,11 @@ def check():
         d = Document(article.title, article.text)
         result = d.compute_val(c)
 
-        if result == 1:
-            return render_template('success.html')
+        if result > 0.6:
+            return render_template('success.html', percentage=round(result*100,3))
         else:
-            return render_template('failure.html')
-    except Exception as e:
-        print(e)
+            return render_template('failure.html', percentage=round(result*100,3))
+    except:
         return render_template('error.html')
     # hashed_val = hash(d)
     # if hashed_val in database:
