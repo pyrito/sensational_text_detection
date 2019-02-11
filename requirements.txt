@@ -3,3 +3,4 @@ Pattern==3.6
 tensorflow==1.12.0
 newspaper3k==0.2.8
 numpy==1.15.4
+gunicorn==19.9.0
