@@ -22,3 +22,4 @@ h4:hover{text-decoration:underline }
 footer{width:70%; padding-left: 0px; text-align:center; margin:0 auto;}
 #navbar{font-size:60px}
 .center{display:block;margin-left:auto;margin-right:auto;width:100%}
+button { margin: 0 auto;}
