@@ -33,7 +33,7 @@ def check():
         else:
             return render_template('failure.html')
     except Exception as e:
-        # raise e
+        print(e)
         return render_template('error.html')
     # hashed_val = hash(d)
     # if hashed_val in database:
