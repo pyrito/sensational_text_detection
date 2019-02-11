@@ -2,7 +2,7 @@
 h1,h2{margin-top:30px}
 nav ul,p{line-height:150%;font-family:Lora,serif}
 .footer,nav{position:fixed;left:0}
-#navbar,*,h1,h2,nav ul,p{font-family:Lora,serif}
+#navbar,*,h1,h2,nav ul,p, button{font-family:Lora,serif}
 *{background-color:#f6f3f3}
 figcaption{font-style:italic}
 h1{text-align:center; font-size:3.5em}
@@ -22,3 +22,16 @@ h4:hover{text-decoration:underline }
 footer{width:70%; padding-left: 0px; text-align:center; margin:0 auto;}
 #navbar{font-size:60px}
 .center{display:block;margin-left:auto;margin-right:auto;width:100%}
+button {
+  background-color: #ddd;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+  font-size: 20px;
+}
