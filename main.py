@@ -4,12 +4,11 @@ app = Flask(__name__)
 from classify import Classifier
 from document import Document
 from newspaper import Article
-import nltk
 import sys
 
 c = Classifier()
 # database = open_database()
-nltk.download('wordnet')
+# nltk.download('wordnet')
 
 @app.route('/')
 def main():
@@ -33,7 +32,8 @@ def check():
             return render_template('success.html')
         else:
             return render_template('failure.html')
-    except:
+    except Exception as e:
+        # raise e
         return render_template('error.html')
     # hashed_val = hash(d)
     # if hashed_val in database:

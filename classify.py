@@ -4,7 +4,6 @@ import pattern.en
 import sys
 from pattern.en.wordlist import PROFANITY
 import pickle
-import nltk
 import string
 import collections
 import numpy as np
@@ -37,13 +36,36 @@ class Classifier:
         :param text:
         :return: (vectorized POS for title, vectorized POS for text)
         """
-        text_words = nltk.word_tokenize(text)
-        stop = nltk.corpus.stopwords.words("english")
+        text_words = str.split(text)
+        stop = ['i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves', 'you', "you're", "you've", "you'll", "you'd", 'your', 'yours', 'yourself', 'yourselves', 'he', 'him', 'his', 'himself', 'she', "she's", 'her', 'hers', 'herself', 'it', "it's", 'its', 'itself', 'they', 'them', 'their', 'theirs', 'themselves', 'what', 'which', 'who', 'whom', 'this', 'that', "that'll", 'these', 'those', 'am', 'is', 'are', 'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had', 'having', 'do', 'does', 'did', 'doing', 'a', 'an', 'the', 'and', 'but', 'if', 'or', 'because', 'as', 'until', 'while', 'of', 'at', 'by', 'for', 'with', 'about', 'against', 'between', 'into', 'through', 'during', 'before', 'after', 'above', 'below', 'to', 'from', 'up', 'down', 'in', 'out', 'on', 'off', 'over', 'under', 'again', 'further', 'then', 'once', 'here', 'there', 'when', 'where', 'why', 'how', 'all', 'any', 'both', 'each', 'few', 'more', 'most', 'other', 'some', 'such', 'no', 'nor', 'not', 'only', 'own', 'same', 'so', 'than', 'too', 'very', 's', 't', 'can', 'will', 'just', 'don', "don't", 'should', "should've", 'now', 'd', 'll', 'm', 'o', 're', 've', 'y', 'ain', 'aren', "aren't", 'couldn', "couldn't", 'didn', "didn't", 'doesn', "doesn't", 'hadn', "hadn't", 'hasn', "hasn't",
+                'haven', "haven't", 'isn', "isn't", 'ma', 'mightn', "mightn't", 'mustn', "mustn't", 'needn', "needn't", 'shan', "shan't", 'shouldn', "shouldn't", 'wasn', "wasn't", 'weren', "weren't", 'won', "won't", 'wouldn', "wouldn't"]
         text_words = list(filter(lambda x: x.lower() not in stop and x.lower() not in string.punctuation, text_words))
-        tagged_text = [" ".join(x[1] for x in nltk.pos_tag(text_words))]
-        title_words = nltk.word_tokenize(title)
+        # tagged_text = [" ".join(x[1] for x in pattern.en.tag(text_words))]
+        tagged_text = []
+        for x in text_words:
+            try:
+                o = pattern.en.tag(x)
+                if isinstance(o[0][1], str):
+                    tagged_text.append(o[0][1])
+                    # print(o)
+            except Exception as e:
+                print(e, x)
+                # pass
+        tagged_text = [' '.join(tagged_text)]
+        title_words = str.split(title)
         title_words = list(filter(lambda x: x.lower() not in stop and x.lower() not in string.punctuation, title_words))
-        tagged_title = [" ".join(x[1] for x in nltk.pos_tag(title_words))]
+        # tagged_title = [" ".join(x[1] for x in pattern.en.tag(title_words))]
+        tagged_title = []
+        for x in title_words:
+            try:
+                o = pattern.en.tag(x)
+                if isinstance(o[0][1], str):
+                    tagged_title.append(o[0][1])
+                    # print(o)
+            except Exception as e:
+                print(e, x)
+                # pass
+        tagged_title = [' '.join(tagged_title)]
         return self.pos_vectorizer.transform(tagged_title), self.pos_vectorizer.transform(tagged_text)
     def __profanity_scan(self, title, text):
         """
@@ -53,7 +75,7 @@ class Classifier:
         :return: return tuple with frequency of profane words in title and text (# of profane in title, # of profane in text)
         """
         profane_list = set(PROFANITY)
-        text_words = nltk.word_tokenize(text)
+        text_words = str.split(text)
         text_count = 0
         title_count = 0
         for word in text_words:
@@ -80,10 +102,10 @@ class Classifier:
         :return: (length of title, average length of sentences in text)
         """
         total = 0
-        text_sent = nltk.sent_tokenize(text)
+        text_sent = str.split(text)
         for sent in text_sent:
-            total += len(nltk.word_tokenize(sent))
-        return (len(nltk.word_tokenize(title)), total / len(text_sent))
+            total += len(str.split(sent))
+        return (len(str.split(title)), total / len(text_sent))
     def __syntax(self, text):
         """
         Use the pattern sentence tree parsing tool to split up the sentence into its chunk permutation
@@ -125,7 +147,7 @@ class Classifier:
         :param text:
         :return: (# of words in all CAPS of title, # of words in call CAPS of text)
         """
-        text_words = nltk.word_tokenize(text)
+        text_words = str.split(text)
         text_count = 0
         title_count = 0
         for word in text_words:
