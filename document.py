@@ -24,4 +24,5 @@ class Document:
             return self.__value
         else:
             self.__value = classifier.classify(self.__title, self.__text)
+            print(self.__value)
             return self.__value
