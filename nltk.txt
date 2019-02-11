@@ -6,3 +6,4 @@ sentiwordnet
 sentence_polarity
 brown
 punkt
+wordnet_ic
