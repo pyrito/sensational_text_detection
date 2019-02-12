@@ -13,11 +13,11 @@ import numpy as np
 class Classifier:
     def __init__(self):
         # ***** Setup vectorizers for features that don't naturally produce numeric values (POS and syntax)
-        with open("posvect2.pkl", "rb") as pik:
+        with open("posvect.pkl", "rb") as pik:
             self.pos_vectorizer = pickle.load(pik)
             print("pickle preloaded for pos vectorizer")
 
-        with open("chunkvect_count2.pkl", "rb") as pik:
+        with open("chunkvect_count.pkl", "rb") as pik:
             self.chunk_vectorizer = pickle.load(pik)
             print("Pickle preloaded for chunk vectorizer")
         try:
