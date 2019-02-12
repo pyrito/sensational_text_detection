@@ -2,7 +2,7 @@
 from flask import Flask, render_template, request,jsonify, abort
 app = Flask(__name__)
 from classify import Classifier
-from document import Document
+# from document import Document
 from newspaper import Article
 import sys
 
@@ -29,8 +29,8 @@ def check():
         article.download()
         article.parse()
 
-        d = Document(article.title, article.text)
-        result = d.compute_val(c)
+        # d = Document(article.title, article.text)
+        result = c.classify(article.title, article.text)
 
         if result > 0.6:
             return render_template('success.html', percentage=round(result*100,3))
