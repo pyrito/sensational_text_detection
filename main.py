@@ -14,6 +14,10 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 def main():
     return render_template('index.html')
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
 @app.route('/check', methods=['POST'])
 def check():
     print (request.form, file=sys.stderr)

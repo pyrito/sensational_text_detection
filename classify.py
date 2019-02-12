@@ -175,8 +175,9 @@ class Classifier:
         with self.graph.as_default():
             result = self.saved_model.predict(sample)
         print (result, file=sys.stderr)
-        if result[0][0] > .6:
-            return 1
-        else:
-            return 0
+        return result[0][0]
+        # if result[0][0] > .6:
+        #     return 1
+        # else:
+        #     return 0
         # return result[0]
