@@ -13,13 +13,21 @@ import numpy as np
 class Classifier:
     def __init__(self):
         # ***** Setup vectorizers for features that don't naturally produce numeric values (POS and syntax)
-        with open("posvect.pkl", "rb") as pik:
+        with open("posvect2.pkl", "rb") as pik:
             self.pos_vectorizer = pickle.load(pik)
             print("pickle preloaded for pos vectorizer")
 
-        with open("chunkvect_count.pkl", "rb") as pik:
+        with open("chunkvect_count2.pkl", "rb") as pik:
             self.chunk_vectorizer = pickle.load(pik)
             print("Pickle preloaded for chunk vectorizer")
+        try:
+            print("Loading model")
+            self.saved_model = keras.models.load_model('sensational_detector_model.h5')
+            self.saved_model._make_predict_function()
+            self.graph = tf.get_default_graph()
+        except FileNotFoundError:
+            print("Model does not exist")
+            exit(1)
 
 # Define functions for feature tagging the text
     def __pos_tag(self, title, text):
@@ -129,15 +137,6 @@ class Classifier:
         return title_count, text_count
 
     def classify(self, title, text):
-        try:
-            print("Loading model")
-            self.saved_model = keras.models.load_model('sensational_detector_model.h5')
-            self.saved_model._make_predict_function()
-            self.graph = tf.get_default_graph()
-        except FileNotFoundError:
-            print("Model does not exist")
-            exit(1)
-
         pos = self.__pos_tag(title, text)
         prof = self.__profanity_scan(title, text)
         sent = self.__sentiment_scan(title, text)
@@ -176,7 +175,6 @@ class Classifier:
         with self.graph.as_default():
             result = self.saved_model.predict(sample)
         print (result, file=sys.stderr)
-        self.saved_model = None
         if result[0][0] > .6:
             return 1
         else:
