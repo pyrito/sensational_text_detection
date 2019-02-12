@@ -20,14 +20,6 @@ class Classifier:
         with open("chunkvect_count.pkl", "rb") as pik:
             self.chunk_vectorizer = pickle.load(pik)
             print("Pickle preloaded for chunk vectorizer")
-        try:
-            print("Loading model")
-            self.saved_model = keras.models.load_model('sensational_detector_model.h5')
-            self.saved_model._make_predict_function()
-            self.graph = tf.get_default_graph()
-        except FileNotFoundError:
-            print("Model does not exist")
-            exit(1)
 
 # Define functions for feature tagging the text
     def __pos_tag(self, title, text):
@@ -137,6 +129,15 @@ class Classifier:
         return title_count, text_count
 
     def classify(self, title, text):
+        try:
+            print("Loading model")
+            self.saved_model = keras.models.load_model('sensational_detector_model.h5')
+            self.saved_model._make_predict_function()
+            self.graph = tf.get_default_graph()
+        except FileNotFoundError:
+            print("Model does not exist")
+            exit(1)
+
         pos = self.__pos_tag(title, text)
         prof = self.__profanity_scan(title, text)
         sent = self.__sentiment_scan(title, text)
@@ -175,6 +176,7 @@ class Classifier:
         with self.graph.as_default():
             result = self.saved_model.predict(sample)
         print (result, file=sys.stderr)
+        self.saved_model = None
         if result[0][0] > .6:
             return 1
         else:
