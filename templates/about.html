@@ -27,12 +27,44 @@
 			which attempted to achieve the same goal that we had: to determine whether a news article was sensationalized.
 		</p>
 		<p>
+			The initial scraping of website information is done by <a href="https://github.com/codelucas/newspaper">Newspaper</a>, a powerful
+			tool used to extract metadata from news sites without having to do the dirty work ourselves. It is very accurate 
+			and powerful and allowed the webapp to easily parse out the title and text information that is needed for our model.
+		</p>
+		<p>
 			The model uses text analysis tools such as NLTK and Pattern to extract features from the text. We look
 			at features including sentence structure, part-of-speech usage, sentence length, sentiment, punctuation, etc.
 			to input into a neural network and produce a classification for the article as sensationalized or not sensationalized.
+			While it would seem intuitive to go ahead and focus on the words used in sensational, bias pieces of text, we decided to 
+			try experimenting with focusing on semantical usage instead (since most sensational text is subtle and not explicit.)
 		</p>
 		<p>
-			Potential pitfalls:
+			Our model architecture works as follows (using NLTK, Pattern and Tensorflow):
+			<ul>
+				<li>Feature tagger that takes raw text -> numeric data vector</li>
+				<li>Neural network architecture: one single convolutional layer, 
+					three fully connected dense layers with 16 neurons, fully connected
+					output layer with a single output neuron.
+				</li>
+			</ul>
+		</p>
+		<p>
+			We trained this model on 16,000 training articles and 2,000 testing articles. Data set was extracted
+			from the News Audit project. Below you can see the training accuracy of our model: 
+			<img src="static/imgs/training.png" class="center" >
+		</p>
+		<p>
+			After training our model to be around 95% accurate with the training set, we tested our model with the 
+			test set and got an accuracy of around 96%, a 3-4% increase over the other models that used this same 
+			data set.
+		</p>
+		
+			<h2>Potential pitfalls:</h2>
+		<p>
+			Although our model has shown strong results, it still struggles with "fake news", data sets with sources
+			such as "The Onion." Furthermore, structure of sensational texts can change in the future, and there will 
+			be issues with that as well. In addition, this model is not good at articles that quote other sources, etc 
+			so it may accidentally tag some sites as sensationalized (an error.)
 		</p>
 	</div>
 </body>
