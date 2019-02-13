@@ -35,7 +35,8 @@ def check():
         if result > 0.6:
             return render_template('success.html', percentage=round(result*100,3))
         else:
-            return render_template('failure.html', percentage=round(result*100,3))
+            final = 100 - round(result*100, 3)
+            return render_template('failure.html', percentage=final)
     except:
         return render_template('error.html')
     # hashed_val = hash(d)
