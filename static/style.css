@@ -12,7 +12,8 @@ h2{font-size:2.5em}
 h3{text-align: center; font-size: 10em; margin-top: 5px; margin-bottom: 5px}
 h4{text-align:center; font-size:3.5em;}
 p{font-weight:400;font-size:1.5em}
-img{max-width:100%;height:auto}
+ul{font-weight:400; font-size:1.5em}
+img{max-width:50%; height:auto;}
 textarea {background-color : #ffffff; resize: none;  height: 100%; width: 100%; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; box-sizing:border-box; font-size:30px; font-family:'VT323', monospace;}
 nav{top:0;width:350px;height:100vh;text-align:center;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;border-right:10px solid #000}
 nav ul{padding:0;font-size:25px;text-align:left;font-weight:lighter;list-style:none}
