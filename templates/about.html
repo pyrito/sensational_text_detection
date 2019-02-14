@@ -59,12 +59,14 @@
 			data set.
 		</p>
 		
-			<h2>Potential pitfalls:</h2>
+			<h2>Important Note:</h2>
 		<p>
-			Although our model has shown strong results, it still struggles with "fake news", data sets with sources
-			such as "The Onion." Furthermore, structure of sensational texts can change in the future, and there will 
-			be issues with that as well. In addition, this model is not good at articles that quote other sources, etc 
-			so it may accidentally tag some sites as sensationalized (an error.)
+			Although there is often a correlation between sensationalism and "fake news", our model is not a fake news
+			detector. It does NOT fact check the articles. In fact, it never looks at the words individually in terms
+			of what they mean. All of our analysis is purely based on the semantics and linguistic structure of the text.
+			For example, articles from sites such as The Onion, which writes fake news for satirical purposes, can be
+			noted as "not sensationalized" due to the lexical techniques used to maintain a completely serious,
+			objective tone.
 		</p>
 	</div>
 </body>
