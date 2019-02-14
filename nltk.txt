@@ -1,9 +1,4 @@
 wordnet
-book_grammars
-large_grammars
-senseval
-sentiwordnet
-sentence_polarity
 brown
 punkt
 wordnet_ic
