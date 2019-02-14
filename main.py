@@ -33,10 +33,10 @@ def check():
         result = c.classify(article.title, article.text)
 
         if result > 0.6:
-            return render_template('success.html', percentage=round(result*100,3))
+            return render_template('success.html', percentage='%.3f' % round(result*100,3))
         else:
             final = 100 - round(result*100, 3)
-            return render_template('failure.html', percentage=final)
+            return render_template('failure.html', percentage='%.3f' % final)
     except:
         return render_template('error.html')
     # hashed_val = hash(d)
